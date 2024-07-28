@@ -1,70 +1,162 @@
-# Getting Started with Create React App
+Task Manager Project
+Table of Contents
+Introduction
+Features
+Technologies
+Setup
+Backend Setup (Django)
+Frontend Setup (React)
+Usage
+Running the Backend
+Running the Frontend
+Deployment
+Deploying the Backend
+Deploying the Frontend
+License
+Introduction
+This is a full-stack task manager application built using Django for the backend and React for the frontend. The application allows users to create, read, update, and delete tasks.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Features
+User authentication (login required to manage tasks)
+Create, read, update, and delete tasks
+Responsive UI
+Technologies
+Backend: Django, Django REST framework
+Frontend: React, Axios
+Database: SQLite (for development)
+Deployment: Heroku (backend), Netlify (frontend)
+Setup
+Backend Setup (Django)
+Clone the repository:
 
-## Available Scripts
+bash
+Copy code
+git clone <repository-url>
+cd taskmanager
+Create a virtual environment:
 
-In the project directory, you can run:
+bash
+Copy code
+python -m venv venv
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
+Install the required packages:
 
-### `npm start`
+bash
+Copy code
+pip install -r requirements.txt
+Apply migrations:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+bash
+Copy code
+python manage.py makemigrations
+python manage.py migrate
+Create a superuser:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+bash
+Copy code
+python manage.py createsuperuser
+Run the development server:
 
-### `npm test`
+bash
+Copy code
+python manage.py runserver
+Frontend Setup (React)
+Navigate to the frontend directory:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+bash
+Copy code
+cd taskmanager-frontend
+Install the required packages:
 
-### `npm run build`
+bash
+Copy code
+npm install
+Run the development server:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+bash
+Copy code
+npm start
+Usage
+Running the Backend
+Ensure you are in the taskmanager directory and have your virtual environment activated.
+Run the Django development server:
+bash
+Copy code
+python manage.py runserver
+Running the Frontend
+Ensure you are in the taskmanager-frontend directory.
+Run the React development server:
+bash
+Copy code
+npm start
+Deployment
+Deploying the Backend
+Install Heroku CLI:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+bash
+Copy code
+curl https://cli-assets.heroku.com/install.sh | sh
+Login to Heroku:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+bash
+Copy code
+heroku login
+Create a Procfile in the root of your backend project:
 
-### `npm run eject`
+makefile
+Copy code
+web: gunicorn taskmanager.wsgi
+Install Gunicorn:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+pip install gunicorn
+Commit changes:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+bash
+Copy code
+git add .
+git commit -m "Prepare for deployment"
+Create a Heroku app:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+Copy code
+heroku create
+Deploy to Heroku:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+bash
+Copy code
+git push heroku master
+Run database migrations on Heroku:
 
-## Learn More
+bash
+Copy code
+heroku run python manage.py migrate
+Deploying the Frontend
+Install Netlify CLI:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+bash
+Copy code
+npm install -g netlify-cli
+Login to Netlify:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+bash
+Copy code
+netlify login
+Build the React app:
 
-### Code Splitting
+bash
+Copy code
+npm run build
+Deploy to Netlify:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+bash
+Copy code
+netlify deploy --dir=build
+Publish the site:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+bash
+Copy code
+netlify deploy --dir=build --prod
+License
+This project is licensed under the MIT License. See the LICENSE file for details.
